@@ -1,19 +1,50 @@
 <template>
     <section v-loading="loading">
-        <el-table :data="distanceData" style="width: 100%">
-            <el-table-column prop="name" label="Name"/>
-            <el-table-column prop="distance" label="Distance"/>
-        </el-table>
+        <el-header>Fleetsmart Technical Question</el-header>
+        <section class="anagram-wrapper ">
+            <h2>Anagram checker</h2>
+            <el-divider></el-divider>
+            <div class="row-bg">
+                <el-row type="flex">
+                    <el-col :span="8">
+                        <div class="grid-content">
+                            <el-input style="width: 90%" placeholder="Enter first word" v-model="words.word1"/>
+                        </div>
+                    </el-col>
+                    <el-col :span="8">
+                        <div class="grid-content ">
+                            <el-input style="width: 90%" placeholder="Enter second word" v-model="words.word2"/>
+                        </div>
+                    </el-col>
+                    <el-col :span="8">
+                        <div class="grid-content ">
+                            <el-input style="width: 90%" placeholder="Enter third word" v-model="words.word3"/>
+                        </div>
+                    </el-col>
+                    <el-col :span="8">
+                        <div class="grid-content ">
+                            <el-button type="success" v-on:click="compareStrings">Compare</el-button>
+                        </div>
+                    </el-col>
 
-        <section>
-            <el-row>
-                <el-col :span="6"><el-input placeholder="Enter first word" v-model="words.word1"></el-input></el-col>
-                <el-col :span="6"><el-input placeholder="Enter second word" v-model="words.word2"></el-input></el-col>
-                <el-col :span="6"><el-input placeholder="Enter third word" v-model="words.word3"></el-input></el-col>
-                <el-col :span="6"><el-button type="success" plain v-on:click="compareStrings">Compare</el-button></el-col>
-            </el-row>
-            <el-alert :title="anagramCheckResult" type="success" v-if="anagramCheckResult"/>
-            <el-alert :title="anagramCheckError" type="error" v-if="anagramCheckError"/>
+                </el-row>
+                <div class="alert-wrapper">
+                    <el-alert :title="anagramCheckResult" type="success" v-if="anagramCheckResult" effect="dark"
+                              show-icon center/>
+                    <el-alert :title="anagramCheckError" type="error" v-if="anagramCheckError" effect="dark" show-icon
+                              center/>
+                </div>
+
+            </div>
+        </section>
+        <section class="table-wrapper">
+            <h2>Distance checker</h2>
+            <el-divider></el-divider>
+            <el-table type="flex" class="table-bg" justify="space-around" :data="distanceData" stripe
+                      style="width: 100%">
+                <el-table-column prop="name" label="Name"/>
+                <el-table-column prop="distance" label="Distance"/>
+            </el-table>
         </section>
 
 
@@ -67,12 +98,49 @@
 </script>
 
 <style>
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+    .el-row {
+        margin-bottom: 20px;
+    }
+
+    .el-col {
+        border-radius: 4px;
+    }
+
+    .grid-content {
+        padding: 7%;
+        border-radius: 5px;
+        min-height: 30px;
+    }
+
+    .row-bg {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+        min-height: 80px;
+    }
+
+    .anagram-wrapper {
+        padding: 25px 25px 5px 25px;
+        background-color: #f9fafc;
+    }
+
+    .alert-wrapper {
+        padding: 1px 25px 15px 25px;
+    }
+
+    .table-wrapper {
+        padding: 25px;
+        background-color: #f9fafc;
+    }
+
+    .table-bg {
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
+    }
+
+    .el-header {
+        background-color: #24292E;
+        color: white;
+        text-align: start;
+        line-height: 60px;
+        font-size: 28px;
     }
 </style>
