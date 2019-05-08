@@ -43,7 +43,7 @@
             <el-table type="flex" class="table-bg" justify="space-around" :data="distanceData" stripe
                       style="width: 100%">
                 <el-table-column prop="name" label="Name"/>
-                <el-table-column prop="distance" label="Distance"/>
+                <el-table-column prop="distance" label="Distance, Km"/>
             </el-table>
         </section>
 
